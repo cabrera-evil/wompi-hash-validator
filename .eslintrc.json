@@ -1,0 +1,47 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "root": true,
+  "env": {
+    "es2021": true,
+    "node": true,
+    "jest": true
+  },
+  "extends": [
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended",
+    "prettier"
+  ],
+  "plugins": ["@typescript-eslint/eslint-plugin", "prettier"],
+  "ignorePatterns": [
+    "*.d.ts",
+    "*env*",
+    "commitlint.config.ts",
+    ".eslintrc.json",
+    ".prettierignore",
+    ".prettierrc",
+    "**/.husky/**",
+    "**/coverage/**",
+    "**/dist/**",
+    "**/node_modules/**",
+    "**/public/**",
+    "**/static/**",
+    "**/tests/**"
+  ],
+  "rules": {
+    // Prettier integration
+    "prettier/prettier": ["error"],
+    // TypeScript rules
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-require-imports": "off",
+    "@typescript-eslint/no-unused-vars": "off",
+    // Import/export rules
+    "import/no-unresolved": "off",
+    "import/extensions": "off",
+    "import/prefer-default-export": "off",
+    "global-require": "off",
+    "import/no-absolute-path": "off",
+    // Custom JavaScript rules
+    "no-use-before-define": "off",
+    "no-shadow": "off"
+  }
+}

@@ -1,0 +1,70 @@
+{
+	"name": "wompi-hash-validator",
+	"version": "1.0.0",
+	"description": "Wompi Hash Validator for payment URL",
+	"keywords": [
+		"validation",
+		"hmac",
+		"hash",
+		"url"
+	],
+	"homepage": "https://github.com/cabrera-evil/wompi-hash-validator#readme",
+	"bugs": {
+		"url": "https://github.com/cabrera-evil/wompi-hash-validator/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/cabrera-evil/wompi-hash-validator"
+	},
+	"license": "MIT",
+	"author": {
+		"name": "cabrera-evil",
+		"email": "douglascabrera.dev@gmail.com"
+	},
+	"maintainers": [
+		{
+			"name": "cabrera-evil",
+			"email": "douglascabrera.dev@gmail.com"
+		}
+	],
+	"scripts": {
+		"prebuild": "rimraf dist",
+		"build": "tsc",
+		"lint": "eslint --fix .",
+		"lint:check": "eslint .",
+		"format": "prettier --write .",
+		"format:check": "prettier --check .",
+		"prepare": "husky",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"lint-staged": {
+		"*.{ts,js}": [
+			"pnpm lint:check",
+			"pnpm format:check"
+		]
+	},
+	"devDependencies": {
+		"@commitlint/cli": "^19.6.0",
+		"@commitlint/config-conventional": "^19.6.0",
+		"@types/node": "^22.10.1",
+		"@typescript-eslint/eslint-plugin": "^6.0.0",
+		"@typescript-eslint/parser": "^6.0.0",
+		"eslint": "^8.42.0",
+		"eslint-config-prettier": "^9.1.0",
+		"eslint-plugin-prettier": "^5.2.1",
+		"husky": "^9.1.7",
+		"lint-staged": "^15.2.10",
+		"prettier": "^3.4.2",
+		"prettier-plugin-organize-imports": "^4.1.0",
+		"rimraf": "^6.0.1",
+		"ts-node-dev": "^2.0.0",
+		"typescript": "^5.7.2"
+	},
+	"dependencies": {
+		"crypto": "^1.0.1"
+	},
+	"engines": {
+		"node": ">=14 <=22",
+		"npm": ">=6.0.0"
+	}
+}
