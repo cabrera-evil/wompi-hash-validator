@@ -1,7 +1,12 @@
 {
 	"name": "wompi-hash-validator",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Wompi Hash Validator for payment URL",
+	"files": [
+		"dist"
+	],
+	"main": "./dist/index.js",
+	"types": "./dist/index.d.ts",
 	"keywords": [
 		"validation",
 		"hmac",
