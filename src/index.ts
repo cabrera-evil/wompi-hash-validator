@@ -1,29 +1,27 @@
-import * as crypto from 'crypto';
-import { WompiUrlParams } from './types';
+import { createHmac } from 'crypto';
 
 /**
- * Validate the hash of a URL using the given API secret key.
- * @param url The URL to validate.
- * @param secretKey The secret key to use for validation.
- * @returns `true` if the hash is valid, otherwise `false`.
+ * Verifies the HMAC hash of a Wompi URL using the provided secret key.
+ * @param url - The full URL containing query parameters and the hash.
+ * @param secretKey - Your Wompi API secret key.
+ * @returns Whether the hash is valid.
  */
 export const validateHash = (url: string, secretKey: string): boolean => {
-  const params = new URL(url).searchParams;
-  // Order of parameters as per Wompi documentation
-  const paramOrder: (keyof WompiUrlParams)[] = [
-    'identificadorEnlaceComercio',
-    'idTransaccion',
-    'idEnlace',
-    'monto',
-  ];
-  // Concatenate parameters in the correct order
-  const concatenatedParams = paramOrder
-    .map((key) => params.get(key) || '')
-    .join('');
-  // Generate HMAC hash and compare
-  const computedHash = crypto
-    .createHmac('sha256', secretKey)
-    .update(concatenatedParams)
-    .digest('hex');
-  return computedHash === params.get('hash');
+	const params = new URL(url).searchParams;
+	const expected = [
+		'identificadorEnlaceComercio',
+		'idTransaccion',
+		'idEnlace',
+		'monto',
+	]
+		.map((key) => params.get(key) ?? '')
+		.join('');
+
+	const actualHash = params.get('hash');
+	if (!actualHash) return false;
+
+	const computedHash = createHmac('sha256', secretKey)
+		.update(expected)
+		.digest('hex');
+	return computedHash === actualHash;
 };
