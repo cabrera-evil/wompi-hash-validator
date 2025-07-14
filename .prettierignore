@@ -1,33 +1,19 @@
-# Ignore build output directories (Nest.js-specific)
-dist/
-
 # Ignore git hooks
-.husky/
-
-# Ignore node_modules (dependencies)
-node_modules/
-
-# Ignore TypeScript declaration files
-*.d.ts
+**/.husky/**
 
 # Ignore lock files and configuration files
-package*.json
+package-lock.json
 yarn.lock
 pnpm-lock.yaml
 
-# Ignore environment files
-*env*
-
 # Ignore public/static assets and coverage files
-public/
-static/
-coverage/
-test/
+**/public/**
+**/static/**
+**/coverage/**
 
-# Ignore lint/format-related configuration files
-.eslintrc.json
-commitlint.config.ts
+# Ignore UI components or generated files (like shadcn components)
+**/components/ui/**
 
-# Ignore Prettier configuration file itself
-.prettierrc
-.prettierignore
+# Ignore Documentation files
+README.md
+CHANGELOG.md
