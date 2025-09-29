@@ -1,6 +1,4 @@
 name: Semantic Release
-description: |
-  Automated release process using Semantic Release
 
 on:
   push:
