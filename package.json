@@ -47,7 +47,7 @@
 		"test:cov": "jest --coverage",
 		"test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
 		"check-types": "tsc --project tsconfig.build.json --noEmit",
-		"prepare": "husky"
+		"prepare": "node .husky/install.mjs"
 	},
 	"lint-staged": {
 		"*.{ts,js}": [
@@ -92,8 +92,7 @@
 		"typescript-eslint": "^8.33.1"
 	},
 	"engines": {
-		"node": ">=18.0.0",
-		"pnpm": ">=10.0.0"
+		"node": ">=18.0.0"
 	},
-	"packageManager": "pnpm@10.6.1"
+	"packageManager": "pnpm@10.11.1"
 }
