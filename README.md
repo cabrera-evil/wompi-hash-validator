@@ -1,18 +1,5 @@
 # Wompi Hash Validator
 
-[![Release Version](https://img.shields.io/github/v/release/cabrera-evil/wompi-hash-validator)](https://github.com/cabrera-evil/wompi-hash-validator/releases)
-[![Last Commit](https://img.shields.io/github/last-commit/cabrera-evil/wompi-hash-validator)](https://github.com/cabrera-evil/wompi-hash-validator/commits/main)
-[![Issues](https://img.shields.io/github/issues/cabrera-evil/wompi-hash-validator)](https://github.com/cabrera-evil/wompi-hash-validator/issues)
-[![Pull Requests](https://img.shields.io/github/issues-pr/cabrera-evil/wompi-hash-validator)](https://github.com/cabrera-evil/wompi-hash-validator/pulls)
-[![Forks](https://img.shields.io/github/forks/cabrera-evil/wompi-hash-validator)](https://github.com/cabrera-evil/wompi-hash-validator/network/members)
-[![Stars](https://img.shields.io/github/stars/cabrera-evil/wompi-hash-validator)](https://github.com/cabrera-evil/wompi-hash-validator/stargazers)
-[![License](https://img.shields.io/github/license/cabrera-evil/wompi-hash-validator)](https://github.com/cabrera-evil/wompi-hash-validator/blob/main/LICENSE)
-[![Top Language](https://img.shields.io/github/languages/top/cabrera-evil/wompi-hash-validator)](https://github.com/cabrera-evil/wompi-hash-validator)
-[![Code Size](https://img.shields.io/github/languages/code-size/cabrera-evil/wompi-hash-validator)](https://github.com/cabrera-evil/wompi-hash-validator)
-[![Repository Size](https://img.shields.io/github/repo-size/cabrera-evil/wompi-hash-validator)](https://github.com/cabrera-evil/wompi-hash-validator)
-[![NPM Version](https://img.shields.io/npm/v/wompi-hash-validator)](https://www.npmjs.com/package/wompi-hash-validator)
-[![NPM Downloads](https://img.shields.io/npm/dt/wompi-hash-validator)](https://www.npmjs.com/package/wompi-hash-validator)
-
 The **Wompi Hash Validator** library helps you validate the integrity of Wompi redirect URLs by verifying their HMAC-SHA256 hash. This ensures that the data has not been tampered with during transit.
 
 ## Table of Contents
@@ -20,9 +7,12 @@ The **Wompi Hash Validator** library helps you validate the integrity of Wompi r
 - [Wompi Hash Validator](#wompi-hash-validator)
   - [Table of Contents](#table-of-contents)
   - [Installing](#installing)
+  - [Prerequisites](#prerequisites)
   - [Usage](#usage)
     - [Basic Validation](#basic-validation)
     - [Environment Variables](#environment-variables)
+  - [Examples](#examples)
+  - [Contributing](#contributing)
   - [License](#license)
 
 ## Installing
@@ -44,6 +34,12 @@ Using pnpm:
 ```bash
 pnpm add wompi-hash-validator
 ```
+
+## Prerequisites
+
+- Node.js version >= 14.0.0
+- A valid Wompi API secret key
+- (Optional) A `.env` file for environment variables setup
 
 ## Usage
 
@@ -85,6 +81,48 @@ const isValid = validateHash(url, secretKey);
 
 console.log(`URL validation result: ${isValid ? 'Valid' : 'Invalid'}`);
 ```
+
+## Examples
+
+Here are a few advanced examples of how you can use this library:
+
+#### Example 1: Handling Dynamic URLs
+
+```typescript
+import { validateHash } from 'wompi-hash-validator';
+
+const generateUrl = (id: string, amount: string): string => {
+  return `https://example.com/checkout?id=${id}&amount=${amount}&hash=generatedHashHere`;
+};
+
+const url = generateUrl('123e4567-e89b-12d3-a456-426614174000', '50.00');
+const secretKey = 'your_api_secret_here';
+const isValid = validateHash(url, secretKey);
+
+console.log(`Dynamic URL validation: ${isValid ? 'Valid' : 'Invalid'}`);
+```
+
+#### Example 2: Validating Multiple URLs
+
+```typescript
+import { validateHash } from 'wompi-hash-validator';
+
+const urls = [
+  'https://example.com/checkout?id=1&amount=100&hash=hash1',
+  'https://example.com/checkout?id=2&amount=200&hash=hash2',
+];
+
+const secretKey = 'your_api_secret_here';
+
+urls.forEach((url) => {
+  const isValid = validateHash(url, secretKey);
+  console.log(`Validation result for URL: ${url} - ${isValid ? 'Valid' : 'Invalid'}`);
+});
+```
+
+## Contributing
+
+Contributions are welcome! Please see the [CONTRIBUTING.md](CONTRIBUTING.md) file for more details.
 
 ## License
 
