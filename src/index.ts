@@ -1,4 +1,5 @@
 import { createHmac } from 'crypto';
+import 'dotenv/config';
 
 /**
  * Verifies the HMAC hash of a Wompi URL using the provided secret key.

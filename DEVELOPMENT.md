@@ -24,7 +24,7 @@
    - Create a `.env` file in the root directory.
    - Add your development configuration, such as:
      ```env
-     WOMPI_SECRET_KEY=your_development_secret
+     WOMPI_SECRET=your_development_secret
      ```
 
 ## Building the Project

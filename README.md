@@ -63,7 +63,7 @@ console.log(`URL validation result: ${isValid ? 'Valid' : 'Invalid'}`);
 To improve security and keep sensitive data out of your codebase, you can use environment variables to store your API secret key. Use the `dotenv` package to load the secret key from a `.env` file:
 
 ```env
-WOMPI_SECRET_KEY=your_api_secret_here
+WOMPI_SECRET=your_api_secret_here
 ```
 
 Then, modify your script to use the environment variable:
@@ -76,7 +76,7 @@ dotenv.config();
 
 const url =
   'https://example.com/checkout?identificadorEnlaceComercio=ExampleCommerce&idTransaccion=123e4567-e89b-12d3-a456-426614174000&idEnlace=789456&monto=50.00&hash=a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a7b8c9d0e1f2';
-const secretKey = process.env.WOMPI_SECRET_KEY;
+const secretKey = process.env.WOMPI_SECRET;
 const isValid = validateHash(url, secretKey);
 
 console.log(`URL validation result: ${isValid ? 'Valid' : 'Invalid'}`);
